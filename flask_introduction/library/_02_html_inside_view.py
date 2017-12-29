@@ -15,11 +15,30 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
+    # Original string:
+    # html = """
+    #     <html>
+    #         <h1>Welcome to our Library!</h1>
+    #             <ul>
+    #                 <li>Alan Poe</li>
+    #                 <li>Jorge L. Borges</li>
+    #                 <li>Mark Twain</li>
+    #             </ul>
+    #     </html>
+    # """
+    
+    # Dynamic string
     html = """
         <html>
             <h1>Welcome to our Library!</h1>
+                {authors_ul}
         </html>
     """
-    authors = ["Alan Poe", "Jorge L. Borges", "Mark Twain"]
+    authors = ["Alan Poe", "Jorge L. Borges", "Mark Twain", "Jane Austen"]
     # build an <ul> with authors
-    return html
+    authors_list = "<ul>"
+    authors_list += "\n".join(["<li>{author}</li>".format(author=author) for author in authors])
+    authors_list += "</ul>"
+    # print(authors_list)
+    
+    return html.format(authors_ul=authors_list)
