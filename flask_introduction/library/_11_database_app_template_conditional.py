@@ -13,8 +13,11 @@ def connect_db():
     return sqlite3.connect(config.DATABASE_NAME)
 
 
+# This function is invoked every time a new request happens.
 @app.before_request
 def before_request():
+    # g is the global object from the Flask library. It's used when you want to 
+    # invoke different functions to fulfill certain details for one request.
     g.db = connect_db()
 
 

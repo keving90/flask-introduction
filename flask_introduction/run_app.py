@@ -1,7 +1,7 @@
 import os
 
 # from library._01_simple import app
-from library._02_html_inside_view import app
+# from library._02_html_inside_view import app
 # from library._03_template_str_inside_view import app
 # from library._04_template_outside_view import app
 # from library._05_basic_routing import app
@@ -15,10 +15,12 @@ from library._02_html_inside_view import app
 # from library._13_simple_form_submission import app
 # from library._14_static_files import app
 # from library._15_template_inheritance import app
+from library._16_login_example import app
 
 
 if __name__ == '__main__':
     app.debug = True
+    app.config['SECRET_KEY'] = "kljasdno9asud89uy981uoaisjdoiajsdm89uas980d"
     host = os.environ.get('IP', '0.0.0.0')
     port = int(os.environ.get('PORT', 8080))
     app.run(host=host, port=port)
